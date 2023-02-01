@@ -7,24 +7,70 @@ namespace Records {
     //Constructor
     Employee::Employee(const std::string& firstName, const std::string &lastName) : mFirstName(firstName), mLastName(lastName){}
 
-    //Promote an employee with a given amount added to their salary.
+    /*
+        promote(int)
+
+        Promote an employee with a given amount added to their salary.
+
+        Returns:
+            None.
+        Throws:
+            logic_error if Employee is not found. 
+            - Note: program does crash if a string is entered.
+    */
     void Employee::promote(int raiseAmount){
         setSalary(getSalary() + raiseAmount);
     }
-    //Demote an employee with a given amount deducted from their salary.
+    /*
+        demote(int)
+
+        Demote an employee with a given amount deducted from their salary.
+
+        Returns:
+            None.
+        Throws:
+            logic_error if Employee is not found.
+            - Note: as stated above, program crashes if string is entered
+    */
     void Employee::demote(int demeritAmount){
         setSalary(getSalary() - demeritAmount);
     }
-    //Hire an individual.
+    /*
+        hire()
+
+        Hire an individual.
+
+        Returns:
+            None. Sets the employee's status as hired. 
+        Throws:
+            None.
+    
+    */
     void Employee::hire(){
         mHired = true;
     }
-    //Fire an individual.
-    //Later version can add a function to remove individual from the database.
+    /*
+        fire()
+
+        Fire an individual.
+
+        Returns:
+            None. Sets the ex-employee's status as fired.
+    */
     void Employee::fire(){
         mHired = false;
     }
-    //Display employee's information.
+
+    /*
+        display()
+
+        Displays an individual's information.
+
+        Returns:
+            None
+        Throws:
+            None
+    */
     void Employee::display() const {
         cout << "Employee: " << getLastName() << ", " << getFirstName() << endl;
         cout << "----------------------------------------" << endl;

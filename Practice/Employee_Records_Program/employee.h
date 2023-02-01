@@ -11,11 +11,10 @@ namespace Records {
 
             void promote(int raiseAmount = 1000);
             void demote(int demeritAmount = 1000);
-            void hire(); // Hires or rehires the employee
-            void fire(); // Fires the employee
-            void display() const; // Outputs employee info to console
+            void hire(); 
+            void fire(); 
+            void display() const; 
 
-            //getters and setters
             void setFirstName(const std::string& firstName);
             const std::string& getFirstName() const;
 

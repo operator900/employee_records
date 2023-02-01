@@ -1,3 +1,10 @@
+/*
+Developer comments:
+    - Should probably add a function to remove an employee completely from the vector of Employees. If a user makes
+        a mistake of adding something they didn't want, there's no way of removing it currently.
+    
+*/
+
 #include <iostream>
 #include <stdexcept>
 #include "database.h"
@@ -7,7 +14,17 @@ using namespace std;
 using namespace Records;
 
 namespace Records {
-            //Add employee to the database.
+            /*
+                addEmployee(string, string)
+
+                Add employee to the database.
+
+            Returns: Employee
+                Variable of type employee from the vector of employees in database.h
+            Throws:
+                N/A. Tested multiple items, does not break. 
+
+            */
             Employee& Database::addEmployee(const std::string& firstName, const std::string& lastName){
                 Employee theEmployee(firstName, lastName);
                 theEmployee.setEmployeeNumber(mNextEmployeeNumber++);
@@ -15,7 +32,16 @@ namespace Records {
                 mEmployees.push_back(theEmployee);
                 return mEmployees[mEmployees.size() - 1];
             }
-            //Find an employee from the database using their employee number.
+            /*
+                getEmployee(int)
+
+                Find an employee from the database using their employee number.
+
+            Returns: Employee
+                Returns a variable of type Employee
+            Throws:
+                logic_error if Employee number is not found.
+            */
             Employee& Database::getEmployee(int employeeNumber){
                 for(auto& employee : mEmployees) {
                     if (employee.getEmployeeNumber() == employeeNumber){
@@ -24,7 +50,16 @@ namespace Records {
                 }
                 throw logic_error("No employee found.");
             }
-            //Find an employee using first name and last name.
+            /*
+                getEmployee(string, string)
+
+                Find an employee from the database using their first and last name.
+
+                Returns: Employee
+                    Returns a variable of type Employee
+                Throws:
+                    logic_error if Employee name is not found.
+            */
             Employee& Database::getEmployee(const std::string& firstName, const std::string& lastName){
                 for (auto& employee : mEmployees) {
                     if(employee.getFirstName() == firstName && employee.getLastName() == lastName){
@@ -33,13 +68,31 @@ namespace Records {
                 }
                 throw logic_error("No employee found.");
             }
-            //Display all employees in the database.
+            /*
+                displayAll()
+
+                Display all employees in the database.
+
+                Returns:
+                    N/A
+                Throws:
+                    N/A
+            */
             void Database::displayAll() const{
                 for(const auto& employee : mEmployees){
                     employee.display();
                 }
             }
-            //Display all employees currently employed to the company.
+            /*
+                displayCurrent()
+
+                Display all employees currently employed to the company.
+
+                Returns:
+                    N/A
+                Throws:
+                    N/A
+            */
             void Database::displayCurrent() const{
                 for(const auto& employee : mEmployees){
                     if(employee.isHired()){
@@ -47,7 +100,16 @@ namespace Records {
                     }
                 }
             }
-            //Display all employees fired and/or laid off from the company.
+            /*
+                displayFormer()
+
+                Display all employees fired and/or laid off from the company.
+
+                Returns:
+                    N/A
+                Throws:
+                    N/A
+            */
             void Database::displayFormer() const{
                 for(const auto& employee : mEmployees){
                     if(!employee.isHired()){
